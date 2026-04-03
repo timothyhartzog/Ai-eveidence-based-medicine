@@ -1,0 +1,7 @@
+name = "PediatricEvidence"
+uuid = "f73f421d-0bfe-4bd0-9b0e-8b0da9ca22f3"
+version = "0.1.0"
+authors = ["AI Evidence Team"]
+
+[compat]
+julia = "1.10"

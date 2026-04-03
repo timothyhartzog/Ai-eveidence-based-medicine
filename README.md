@@ -27,3 +27,17 @@ Return:
 - Ollama
 - Apple Silicon / MLX-aware model routing
 - SQLite first, PostgreSQL-ready later
+
+## Implemented evidence layers
+
+A minimal Julia module now exists under `src/` implementing:
+- pediatric/neonatal grading enums and typed output structs
+- recommendation-layer enums and typed output structs
+- validation and downgrade caps
+- SQL persistence fields in `db/schema.sql`
+
+Run tests with:
+
+```bash
+julia --project -e 'using Pkg; Pkg.test()'
+```
