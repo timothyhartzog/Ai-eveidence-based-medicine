@@ -27,3 +27,59 @@ Return:
 - Ollama
 - Apple Silicon / MLX-aware model routing
 - SQLite first, PostgreSQL-ready later
+
+## Implemented evidence layers
+
+A minimal Julia module now exists under `src/` implementing:
+- pediatric/neonatal grading enums and typed output structs
+- recommendation-layer enums and typed output structs
+- validation and downgrade caps
+- SQL persistence fields in `db/schema.sql`
+
+Run tests with:
+
+```bash
+julia --project -e 'using Pkg; Pkg.test()'
+```
+
+## Review pipeline quickstart
+
+```bash
+julia --project -e 'using Pkg; Pkg.instantiate()'
+julia --project examples/basic_pipeline.jl
+```
+
+Required services:
+- PubMed E-utilities (network)
+- Local Ollama server at `http://localhost:11434` (override with `OllamaClient(base_url=...)`)
+
+## Evidence table and persistence utilities
+
+The package now includes:
+- `grading_row`, `recommendation_row`, `save_appraisal!` for appraisal persistence payloads
+- `EvidenceTableRow` plus CSV/JSON export helpers for evidence tables
+
+## PRISMA flow support
+
+Use `prisma_from_pipeline` to derive PRISMA counts from deterministic pipeline artifacts, or `run_review_pipeline_with_prisma` to run and summarize in one call.
+
+## Structured synthesis layer
+
+Use `synthesize_evidence(grading, recommendation; ...)` to produce synthesis outputs from structured artifacts only, and `synthesis_json` for strict JSON serialization.
+
+## Phase 10 dashboard utilities
+
+Dashboard-oriented helpers are available for:
+- pipeline status (`pipeline_status_view`, `dashboard_pipeline_status_json`)
+- evidence table exploration (`evidence_table_explorer`, `dashboard_evidence_table_json`)
+- PRISMA metrics (`prisma_metrics_view`, `dashboard_prisma_json`)
+- neonatal/pediatric scope distribution (`age_scope_distribution`, `dashboard_age_distribution_json`)
+
+## Phase 11 hardening utilities
+
+Hardening helpers include:
+- `validate_pipeline_output` for structural consistency checks
+- `audit_fingerprint` for stable deterministic trace fingerprints
+- `check_pubmed_health`, `check_ollama_health`, and `hardening_report` for config/network readiness checks
+
+Pipeline outputs now preserve raw ESearch payloads, raw ESummary JSON, and raw EFetch XML for auditability.

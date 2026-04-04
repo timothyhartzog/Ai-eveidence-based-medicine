@@ -1,0 +1,115 @@
+module PediatricEvidence
+
+export TargetScope,
+    EvidenceScope,
+    PopulationMatch,
+    StudyDesign,
+    OutcomeRelevance,
+    RiskOfBias,
+    ConsistencyLevel,
+    PrecisionLevel,
+    CertaintyLevel,
+    RecommendationStrength,
+    BenefitHarmBalance,
+    FeasibilityLevel,
+    PreferenceSensitivity,
+    population_directness_score,
+    population_applicability_score,
+    study_design_score,
+    outcome_relevance_score,
+    risk_of_bias_score,
+    consistency_score,
+    precision_score,
+    certainty_score,
+    recommendation_strength_score,
+    benefit_harm_score,
+    feasibility_score,
+    preference_sensitivity_score,
+    NEONATAL_CRITICAL_OUTCOMES,
+    PEDIATRIC_CRITICAL_OUTCOMES,
+    GradingOutput,
+    RecommendationOutput,
+    build_grading_output,
+    build_recommendation_output,
+    validation_errors,
+    AgeScope,
+    PubMedAuthor,
+    PubMedArticle,
+    ArticleChunk,
+    ChunkEmbedding,
+    ReviewPipelineOutput,
+    PrismaFlow,
+    ReviewPipelineWithPrisma,
+    PubMedClient,
+    esearch,
+    esummary,
+    efetch,
+    parse_pubmed_xml,
+    normalize_articles,
+    infer_age_scope,
+    chunk_abstracts,
+    OllamaClient,
+    chat_json,
+    embed_texts,
+    embed_chunks,
+    rerank_chunks,
+    rewrite_pubmed_query,
+    ExtractionOutput,
+    extract_structured_evidence,
+    run_review_pipeline,
+    run_review_pipeline_with_prisma,
+    build_prisma_flow,
+    prisma_from_pipeline,
+    grading_row,
+    recommendation_row,
+    save_appraisal!,
+    EvidenceTableRow,
+    evidence_table_dataframe,
+    filter_evidence_rows,
+    write_evidence_csv,
+    write_evidence_json,
+    SynthesisOutput,
+    synthesize_evidence,
+    synthesis_json,
+    pipeline_status_view,
+    evidence_table_explorer,
+    prisma_metrics_view,
+    age_scope_distribution,
+    dashboard_pipeline_status_json,
+    dashboard_evidence_table_json,
+    dashboard_prisma_json,
+    dashboard_age_distribution_json,
+    ValidationIssue,
+    validate_pipeline_output,
+    audit_fingerprint,
+    ServiceHealth,
+    check_pubmed_health,
+    check_ollama_health,
+    hardening_report
+
+include("types.jl")
+include("domain/article_models.jl")
+include("domain/prisma_models.jl")
+include("constants.jl")
+include("grading.jl")
+include("recommendation.jl")
+include("llm/ollama_client.jl")
+include("pubmed/client.jl")
+include("pubmed/parser.jl")
+include("pubmed/normalizer.jl")
+include("documents/chunkers.jl")
+include("retrieval/embedding.jl")
+include("retrieval/rerank.jl")
+include("agents/query_rewriter.jl")
+include("agents/extraction_agent.jl")
+include("pipelines/review_pipeline.jl")
+include("prisma/tracker.jl")
+include("db/grading_repo.jl")
+include("tables/evidence_tables.jl")
+include("synthesis/structured_synthesis.jl")
+include("ui/dashboard_viewmodels.jl")
+include("api/dashboard_routes.jl")
+include("hardening/validators.jl")
+include("hardening/healthchecks.jl")
+
+end
