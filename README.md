@@ -56,3 +56,7 @@ Required services:
 ## PRISMA flow support
 
 Use `prisma_from_pipeline` to derive PRISMA counts from deterministic pipeline artifacts, or `run_review_pipeline_with_prisma` to run and summarize in one call.
+
+## Structured synthesis layer
+
+Use `synthesize_evidence(grading, recommendation; ...)` to produce synthesis outputs from structured artifacts only, and `synthesis_json` for strict JSON serialization.

@@ -4,3 +4,4 @@ using PediatricEvidence
 include("test_layers.jl")
 include("test_pipeline_components.jl")
 include("test_prisma.jl")
+include("test_synthesis.jl")

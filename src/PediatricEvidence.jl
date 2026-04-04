@@ -59,8 +59,12 @@ export TargetScope,
     run_review_pipeline_with_prisma,
     build_prisma_flow,
     prisma_from_pipeline,
-include("domain/prisma_models.jl")
+    write_evidence_json,
+    SynthesisOutput,
+    synthesize_evidence,
+    synthesis_json
 include("prisma/tracker.jl")
+include("synthesis/structured_synthesis.jl")
     run_review_pipeline
 
 include("types.jl")
