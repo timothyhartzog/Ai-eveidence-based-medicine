@@ -70,11 +70,20 @@ export TargetScope,
     dashboard_pipeline_status_json,
     dashboard_evidence_table_json,
     dashboard_prisma_json,
-    dashboard_age_distribution_json
+    dashboard_age_distribution_json,
+    ValidationIssue,
+    validate_pipeline_output,
+    audit_fingerprint,
+    ServiceHealth,
+    check_pubmed_health,
+    check_ollama_health,
+    hardening_report
 include("prisma/tracker.jl")
 include("synthesis/structured_synthesis.jl")
 include("ui/dashboard_viewmodels.jl")
 include("api/dashboard_routes.jl")
+include("hardening/validators.jl")
+include("hardening/healthchecks.jl")
     run_review_pipeline
 
 include("types.jl")

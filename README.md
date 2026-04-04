@@ -68,3 +68,10 @@ Dashboard-oriented helpers are available for:
 - evidence table exploration (`evidence_table_explorer`, `dashboard_evidence_table_json`)
 - PRISMA metrics (`prisma_metrics_view`, `dashboard_prisma_json`)
 - neonatal/pediatric scope distribution (`age_scope_distribution`, `dashboard_age_distribution_json`)
+
+## Phase 11 hardening utilities
+
+Hardening helpers include:
+- `validate_pipeline_output` for structural consistency checks
+- `audit_fingerprint` for stable deterministic trace fingerprints
+- `check_pubmed_health`, `check_ollama_health`, and `hardening_report` for config/network readiness checks
