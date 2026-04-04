@@ -60,3 +60,11 @@ Use `prisma_from_pipeline` to derive PRISMA counts from deterministic pipeline a
 ## Structured synthesis layer
 
 Use `synthesize_evidence(grading, recommendation; ...)` to produce synthesis outputs from structured artifacts only, and `synthesis_json` for strict JSON serialization.
+
+## Phase 10 dashboard utilities
+
+Dashboard-oriented helpers are available for:
+- pipeline status (`pipeline_status_view`, `dashboard_pipeline_status_json`)
+- evidence table exploration (`evidence_table_explorer`, `dashboard_evidence_table_json`)
+- PRISMA metrics (`prisma_metrics_view`, `dashboard_prisma_json`)
+- neonatal/pediatric scope distribution (`age_scope_distribution`, `dashboard_age_distribution_json`)

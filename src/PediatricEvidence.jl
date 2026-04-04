@@ -62,9 +62,19 @@ export TargetScope,
     write_evidence_json,
     SynthesisOutput,
     synthesize_evidence,
-    synthesis_json
+    synthesis_json,
+    pipeline_status_view,
+    evidence_table_explorer,
+    prisma_metrics_view,
+    age_scope_distribution,
+    dashboard_pipeline_status_json,
+    dashboard_evidence_table_json,
+    dashboard_prisma_json,
+    dashboard_age_distribution_json
 include("prisma/tracker.jl")
 include("synthesis/structured_synthesis.jl")
+include("ui/dashboard_viewmodels.jl")
+include("api/dashboard_routes.jl")
     run_review_pipeline
 
 include("types.jl")
