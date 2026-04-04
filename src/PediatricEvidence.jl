@@ -31,11 +31,45 @@ export TargetScope,
     RecommendationOutput,
     build_grading_output,
     build_recommendation_output,
-    validation_errors
+    validation_errors,
+    AgeScope,
+    PubMedAuthor,
+    PubMedArticle,
+    ArticleChunk,
+    ChunkEmbedding,
+    ReviewPipelineOutput,
+    PubMedClient,
+    esearch,
+    esummary,
+    efetch,
+    parse_pubmed_xml,
+    normalize_articles,
+    infer_age_scope,
+    chunk_abstracts,
+    OllamaClient,
+    chat_json,
+    embed_texts,
+    embed_chunks,
+    rerank_chunks,
+    rewrite_pubmed_query,
+    ExtractionOutput,
+    extract_structured_evidence,
+    run_review_pipeline
 
 include("types.jl")
+include("domain/article_models.jl")
 include("constants.jl")
 include("grading.jl")
 include("recommendation.jl")
+include("llm/ollama_client.jl")
+include("pubmed/client.jl")
+include("pubmed/parser.jl")
+include("pubmed/normalizer.jl")
+include("documents/chunkers.jl")
+include("retrieval/embedding.jl")
+include("retrieval/rerank.jl")
+include("agents/query_rewriter.jl")
+include("agents/extraction_agent.jl")
+include("pipelines/review_pipeline.jl")
 
 end

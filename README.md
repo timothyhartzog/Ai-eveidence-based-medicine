@@ -41,3 +41,14 @@ Run tests with:
 ```bash
 julia --project -e 'using Pkg; Pkg.test()'
 ```
+
+## Review pipeline quickstart
+
+```bash
+julia --project -e 'using Pkg; Pkg.instantiate()'
+julia --project examples/basic_pipeline.jl
+```
+
+Required services:
+- PubMed E-utilities (network)
+- Local Ollama server at `http://localhost:11434` (override with `OllamaClient(base_url=...)`)

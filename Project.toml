@@ -1,7 +1,23 @@
 name = "PediatricEvidence"
 uuid = "f73f421d-0bfe-4bd0-9b0e-8b0da9ca22f3"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["AI Evidence Team"]
+
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+EzXML = "8f5d6c58-4d06-5f16-a64b-4a8ca0c8d7c3"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+JSON3 = "0f8b85d8-7281-11e9-16c0-19a71f2f9f96"
+SQLite = "0aa819cd-b072-5ff4-a722-6bc24af294d9"
+URIs = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
 
 [compat]
 julia = "1.10"
+CSV = "0.10"
+DataFrames = "1"
+EzXML = "1"
+HTTP = "1"
+JSON3 = "1"
+SQLite = "1"
+URIs = "1"
