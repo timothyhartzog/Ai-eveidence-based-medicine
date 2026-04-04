@@ -47,9 +47,36 @@ struct ReviewPipelineOutput
     rewritten_queries::Vector{String}
     pmids::Vector{String}
     raw_search_json::Vector{String}
+    raw_summary_json::String
     raw_fetch_xml::Vector{String}
     articles::Vector{PubMedArticle}
     chunks::Vector{ArticleChunk}
     chunk_embeddings::Vector{ChunkEmbedding}
     reranked_chunks::Vector{ArticleChunk}
 end
+
+"""Backward-compatible constructor when ESummary payload is unavailable."""
+ReviewPipelineOutput(
+    topic::String,
+    target_scope::AgeScope,
+    rewritten_queries::Vector{String},
+    pmids::Vector{String},
+    raw_search_json::Vector{String},
+    raw_fetch_xml::Vector{String},
+    articles::Vector{PubMedArticle},
+    chunks::Vector{ArticleChunk},
+    chunk_embeddings::Vector{ChunkEmbedding},
+    reranked_chunks::Vector{ArticleChunk},
+) = ReviewPipelineOutput(
+    topic,
+    target_scope,
+    rewritten_queries,
+    pmids,
+    raw_search_json,
+    "",
+    raw_fetch_xml,
+    articles,
+    chunks,
+    chunk_embeddings,
+    reranked_chunks,
+)

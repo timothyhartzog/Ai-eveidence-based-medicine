@@ -28,6 +28,24 @@ function _parse_authors(article_node)
     return authors
 end
 
+function _infer_age_scope(title::String, abstract_text::String, mesh_terms::Vector{String})
+    text = lowercase(join(vcat([title, abstract_text], mesh_terms), " "))
+    has_neonatal = occursin("neonat", text) || occursin("newborn", text) || occursin("preterm", text) || occursin("nicu", text)
+    has_pediatric = occursin("pediatric", text) || occursin("child", text) || occursin("adolesc", text) || occursin("infant", text)
+    has_adult = occursin("adult", text)
+
+    if has_neonatal && has_pediatric
+        return mixed_scope
+    elseif has_neonatal
+        return neonatal_scope
+    elseif has_pediatric
+        return pediatric_scope
+    elseif has_adult
+        return adult_scope
+    end
+    return unknown_scope
+end
+
 """Parse PubMed EFetch XML into typed PubMedArticle records."""
 function parse_pubmed_xml(xml::String)
     doc = EzXML.readxml(IOBuffer(xml))
@@ -43,6 +61,7 @@ function parse_pubmed_xml(xml::String)
         pub_types = _node_texts(n, ".//PublicationType")
         mesh_terms = _node_texts(n, ".//MeshHeading/DescriptorName")
         authors = _parse_authors(n)
+        inferred_scope = _infer_age_scope(title, abstract_text, mesh_terms)
 
         push!(results, PubMedArticle(
             pmid,
@@ -53,7 +72,7 @@ function parse_pubmed_xml(xml::String)
             pub_types,
             mesh_terms,
             authors,
-            unknown_scope,
+            inferred_scope,
             xml,
         ))
     end

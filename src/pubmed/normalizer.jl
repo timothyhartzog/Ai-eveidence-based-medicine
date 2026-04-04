@@ -24,7 +24,7 @@ function normalize_articles(articles::Vector{PubMedArticle})
             unique(a.publication_types),
             unique(a.mesh_terms),
             a.authors,
-            infer_age_scope(a),
+            a.inferred_age_scope == unknown_scope ? infer_age_scope(a) : a.inferred_age_scope,
             a.raw_xml,
         ) for a in articles
     ]

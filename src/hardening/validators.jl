@@ -12,6 +12,11 @@ function validate_pipeline_output(output::ReviewPipelineOutput)
     length(unique(output.pmids)) == length(output.pmids) ||
         push!(issues, ValidationIssue("pmids", "pmids must be unique in pipeline output"))
 
+
+    if !isempty(output.pmids) && isempty(output.raw_summary_json)
+        push!(issues, ValidationIssue("raw_summary_json", "ESummary payload missing for non-empty PMID set"))
+    end
+
     article_pmids = Set(a.pmid for a in output.articles)
     for chunk in output.chunks
         in(chunk.pmid, article_pmids) || push!(issues, ValidationIssue("chunks", "chunk PMID not found in parsed articles"))

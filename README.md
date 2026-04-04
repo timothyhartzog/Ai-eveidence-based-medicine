@@ -75,3 +75,5 @@ Hardening helpers include:
 - `validate_pipeline_output` for structural consistency checks
 - `audit_fingerprint` for stable deterministic trace fingerprints
 - `check_pubmed_health`, `check_ollama_health`, and `hardening_report` for config/network readiness checks
+
+Pipeline outputs now preserve raw ESearch payloads, raw ESummary JSON, and raw EFetch XML for auditability.

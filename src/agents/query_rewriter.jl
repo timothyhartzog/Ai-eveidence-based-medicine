@@ -1,6 +1,7 @@
 """Deterministic query rewriting into constrained PubMed query variants."""
 function rewrite_pubmed_query(topic::String, target_scope::AgeScope)
     clean_topic = strip(topic)
+    isempty(clean_topic) && throw(ArgumentError("topic must not be empty"))
     scope_filter = if target_scope == neonatal_scope
         "(neonate OR neonatal OR newborn OR preterm OR NICU)"
     elseif target_scope == pediatric_scope

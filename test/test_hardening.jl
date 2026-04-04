@@ -8,6 +8,7 @@ using Test
         ["q1"],
         ["1"],
         ["{\"esearchresult\":{\"count\":\"1\",\"idlist\":[\"1\"]}}"],
+        "{\"result\":{}}",
         ["<xml/>"],
         [PubMedArticle("1", "t", "a", "j", 2024, String[], String[], PubMedAuthor[], neonatal_scope, "<xml/>")],
         [ArticleChunk("1", "1_001", "abstract", "text")],

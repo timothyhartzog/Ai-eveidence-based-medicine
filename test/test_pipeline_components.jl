@@ -26,6 +26,7 @@ const SAMPLE_XML = """
     articles = parse_pubmed_xml(SAMPLE_XML)
     @test length(articles) == 1
     @test articles[1].pmid == "12345"
+    @test articles[1].inferred_age_scope in (neonatal_scope, mixed_scope)
 
     normalized = normalize_articles(articles)
     @test normalized[1].inferred_age_scope == neonatal_scope
@@ -37,6 +38,7 @@ const SAMPLE_XML = """
     rewritten = rewrite_pubmed_query("noninvasive ventilation", neonatal_scope)
     @test length(rewritten) == 2
     @test occursin("neonate", lowercase(rewritten[1]))
+    @test_throws ArgumentError rewrite_pubmed_query("   ", neonatal_scope)
 
     reranked = rerank_chunks(chunks, normalized, "mortality preterm", neonatal_scope; top_k=1)
     @test length(reranked) == 1

@@ -26,7 +26,8 @@ function _query_params(client::PubMedClient, extra::Dict{String,String})
 end
 
 function _build_url(client::PubMedClient, endpoint::String, params::Dict{String,String})
-    query = join(["$(k)=$(escapeuri(v))" for (k, v) in params], "&")
+    ordered_keys = sort(collect(keys(params)))
+    query = join(["$(k)=$(escapeuri(params[k]))" for k in ordered_keys], "&")
     return string(client.base_url, "/", endpoint, "?", query)
 end
 

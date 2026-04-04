@@ -15,6 +15,12 @@ function _require_key(obj, key::Symbol)
     return obj[key]
 end
 
+function _validate_exact_keys(raw)
+    required = Set([:pmid, :population, :intervention, :comparator, :outcomes, :key_results, :confidence])
+    present = Set(Symbol(k) for k in keys(raw))
+    present == required || throw(ArgumentError("extraction JSON keys mismatch"))
+end
+
 """Run bounded extraction against a single article and enforce strict structured JSON shape."""
 function extract_structured_evidence(client::OllamaClient, model::String, article::PubMedArticle)
     prompt = """
@@ -27,6 +33,7 @@ Abstract: $(article.abstract)
 """
     system = "You are an extraction assistant. Return only valid JSON with the requested keys."
     raw = chat_json(client, model, prompt; system=system)
+    _validate_exact_keys(raw)
 
     pmid = String(_require_key(raw, :pmid))
     outcomes = [String(v) for v in _require_key(raw, :outcomes)]

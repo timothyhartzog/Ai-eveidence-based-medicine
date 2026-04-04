@@ -18,6 +18,7 @@ function run_review_pipeline(
     end
     pmids = unique(all_pmids)
 
+    raw_summary_json = isempty(pmids) ? "" : esummary(pubmed_client, pmids)
     raw_xml = isempty(pmids) ? "" : efetch(pubmed_client, pmids)
     raw_fetch_xml = isempty(raw_xml) ? String[] : [raw_xml]
 
@@ -33,6 +34,7 @@ function run_review_pipeline(
         rewritten_queries,
         pmids,
         raw_searches,
+        raw_summary_json,
         raw_fetch_xml,
         normalized,
         chunks,
