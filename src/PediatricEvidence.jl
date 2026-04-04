@@ -38,6 +38,8 @@ export TargetScope,
     ArticleChunk,
     ChunkEmbedding,
     ReviewPipelineOutput,
+    PrismaFlow,
+    ReviewPipelineWithPrisma,
     PubMedClient,
     esearch,
     esummary,
@@ -54,6 +56,11 @@ export TargetScope,
     rewrite_pubmed_query,
     ExtractionOutput,
     extract_structured_evidence,
+    run_review_pipeline_with_prisma,
+    build_prisma_flow,
+    prisma_from_pipeline,
+include("domain/prisma_models.jl")
+include("prisma/tracker.jl")
     run_review_pipeline
 
 include("types.jl")

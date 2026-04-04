@@ -52,3 +52,7 @@ julia --project examples/basic_pipeline.jl
 Required services:
 - PubMed E-utilities (network)
 - Local Ollama server at `http://localhost:11434` (override with `OllamaClient(base_url=...)`)
+
+## PRISMA flow support
+
+Use `prisma_from_pipeline` to derive PRISMA counts from deterministic pipeline artifacts, or `run_review_pipeline_with_prisma` to run and summarize in one call.
